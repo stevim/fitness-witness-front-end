@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+// import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 // css
@@ -13,11 +13,12 @@ interface LandingProps {
 
 const Landing = (props: LandingProps): JSX.Element => {
   const { user } = props
+  const navigate = useNavigate()
+  
 
   // const [logInForm, setLogInForm] = useState(false)
   // const [signUpForm, setSignUpForm] = useState(false)
 
-  const navigate = useNavigate()
 
   // const handleLogIn = () => {
   //   setLogInForm(true)
@@ -34,16 +35,16 @@ const Landing = (props: LandingProps): JSX.Element => {
   //   setSignUpForm(false)
   // }
 
-  if (user) {
-    navigate ('/days')
-  }
+  // if (user) {
+  //   navigate ('/days')
+  // }
 
   return (
     <main className={styles.container}>
       <h1>hello, {user ? user.name : 'friend'}</h1>
     </main>
   )
-  
+
   // if (!logInForm && !signUpForm) {
   // }
 }

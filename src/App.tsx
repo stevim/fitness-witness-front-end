@@ -9,7 +9,7 @@ import DayDetails from './pages/DayDetails/DayDetails'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+// import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -68,7 +68,7 @@ function App(): JSX.Element {
             <ProtectedRoute user={user}>
               <NewDay
                 // handleAddDay={handleAddDay}
-                user={user}
+                // user={user}
               />
             </ProtectedRoute>
           }
@@ -78,20 +78,20 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <DayDetails
-                user={user}
+                // user={user}
                 // handleDeleteDay={handleDeleteDay}
               />
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
               <Profiles />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
