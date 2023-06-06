@@ -1,8 +1,23 @@
 import DayCard from "../../components/DayCard/DayCard"
 
-const DayList = () => {
+import { Day } from '../../types/models'
+
+interface DayListProps {
+  days: Day[];
+}
+
+const DayList = ( props: DayListProps ) => {
+  const { days } = props
+
   return (
-    <DayCard />
+    <main>
+      {days.map((day: Day) => 
+        <DayCard
+          key={day.id}
+          day={day}
+        />
+      )}
+    </main>
   )
 }
 

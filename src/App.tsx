@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -18,17 +18,32 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as dayService from './services/dayService'
 
 // styles
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { User, Day } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [days, setDays] = useState<Day[]>([])
+  
   const navigate = useNavigate()
   
+  useEffect((): void => {
+    const fetchDays = async (): Promise<void> => {
+      try {
+        const dayData: Day[] = await dayService.index()
+        setDays(dayData)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    user ? fetchDays() : setDays([])
+  }, [user])
+
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
@@ -58,7 +73,10 @@ function App(): JSX.Element {
           path='/days'
           element={
             <ProtectedRoute user={user}>
-              <DayList />
+              <DayList
+                // user={user}
+                days={days}
+              />
             </ProtectedRoute>
           }
         />

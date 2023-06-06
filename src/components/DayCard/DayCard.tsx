@@ -1,8 +1,23 @@
-const DayCard = (): JSX.Element => {
+import { Day } from '../../types/models'
+
+interface DayCardProps {
+  day: Day
+}
+
+const DayCard = ( props: DayCardProps ): JSX.Element => {
+  const { day } = props
+
+  const formatDate = (dateStr: string): string => {
+    const formattedDate = dateStr.slice(0,10)
+    return formattedDate
+  }
+
   return (
     <article>
-      <h1>DayCard</h1>
-    </article>
+      {formatDate(day.dayDate)}
+      <br/>
+      {day.weight} lbs
+    </article>  
   )
 }
 
