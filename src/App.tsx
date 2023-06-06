@@ -4,6 +4,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
 import DayList from './pages/DayList/DayList'
+import NewDay from './pages/NewDay/NewDay'
+import DayDetails from './pages/DayDetails/DayDetails'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -57,6 +59,28 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <DayList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/days/new'
+          element={
+            <ProtectedRoute user={user}>
+              <NewDay
+                // handleAddDay={handleAddDay}
+                user={user}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/days/:dayId'
+          element={
+            <ProtectedRoute user={user}>
+              <DayDetails
+                user={user}
+                // handleDeleteDay={handleDeleteDay}
+              />
             </ProtectedRoute>
           }
         />
