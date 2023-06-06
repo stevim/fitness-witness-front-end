@@ -1,5 +1,15 @@
 /* ---------===== custom props ====--------- */
 
+export interface Day {
+  id: number;
+  dayDate: Date;
+  profileId: number;
+  weight: number;
+  photo?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 
 /* ---------===== auth models =====--------- */
