@@ -1,8 +1,8 @@
 /* ---------==== custom forms ====--------- */
 
 export interface DayFormData {
-  dayDate: Date;
-  profileId: number;
+  dayDate: string;
+  profileId?: number;
   weight: number;
   photo?: string;
   notes?: string;

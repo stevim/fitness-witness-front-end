@@ -1,5 +1,5 @@
 // import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 // css
 import styles from './Landing.module.css'
@@ -13,40 +13,12 @@ interface LandingProps {
 
 const Landing = (props: LandingProps): JSX.Element => {
   const { user } = props
-  const navigate = useNavigate()
   
-
-  // const [logInForm, setLogInForm] = useState(false)
-  // const [signUpForm, setSignUpForm] = useState(false)
-
-
-  // const handleLogIn = () => {
-  //   setLogInForm(true)
-  //   setSignUpForm(false)
-  // }
-
-  // const handleSignUp = () => {
-  //   setLogInForm(false)
-  //   setSignUpForm(true)
-  // }
-
-  // const handleCancelClick = () => {
-  //   setLogInForm(false)
-  //   setSignUpForm(false)
-  // }
-
-  // if (user) {
-  //   navigate ('/days')
-  // }
-
   return (
     <main className={styles.container}>
       <h1>hello, {user ? user.name : 'friend'}</h1>
     </main>
   )
-
-  // if (!logInForm && !signUpForm) {
-  // }
 }
 
 export default Landing

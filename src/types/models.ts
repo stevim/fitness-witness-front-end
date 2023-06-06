@@ -6,7 +6,6 @@ export interface Day {
   profileId: number;
   weight: number;
   photo?: string;
-  notes?: string;
   createdAt: string;
   updatedAt: string;
 }

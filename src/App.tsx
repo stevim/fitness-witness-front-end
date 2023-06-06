@@ -25,9 +25,11 @@ import './App.css'
 
 // types
 import { User, Day } from './types/models'
+import { DayFormData } from './types/forms'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
+  // const [profile, setProfile] = useState<Profile | null>()
   const [days, setDays] = useState<Day[]>([])
   
   const navigate = useNavigate()
@@ -44,6 +46,18 @@ function App(): JSX.Element {
     user ? fetchDays() : setDays([])
   }, [user])
 
+  const handleCreateDay = async (dayFormData: DayFormData): Promise<void> => {
+    try {
+      const newDay = await dayService.create(dayFormData)
+      console.log(newDay)
+      setDays(days.map(day => (
+        day.id === newDay.id ? newDay : day
+      )))
+    } catch (err) {
+      console.log(err)      
+    }
+  }
+
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
@@ -53,6 +67,8 @@ function App(): JSX.Element {
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
+
+  // if (!profile) return <div>...Loading</div>
 
   return (
     <>
@@ -74,7 +90,6 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <DayList
-                // user={user}
                 days={days}
               />
             </ProtectedRoute>
@@ -85,8 +100,8 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <NewDay
-                // handleAddDay={handleAddDay}
-                // user={user}
+                handleCreateDay={handleCreateDay}
+                user={user}
               />
             </ProtectedRoute>
           }
@@ -96,20 +111,10 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <DayDetails
-                // user={user}
-                // handleDeleteDay={handleDeleteDay}
               />
             </ProtectedRoute>
           }
         />
-        {/* <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}

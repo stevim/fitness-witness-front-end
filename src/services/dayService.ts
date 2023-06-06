@@ -6,6 +6,7 @@ import { Day } from '../types/models'
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/days`
 
 async function create(dayFormData: DayFormData): Promise<Day> {
+  console.log('posting')
   const res = await fetch(BASE_URL, {
     method: 'POST',
     headers: {
