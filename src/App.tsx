@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
+import DayList from './pages/DayList/DayList'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -38,9 +39,27 @@ function App(): JSX.Element {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar
+        user={user}
+        handleLogout={handleLogout}
+      />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route
+          path="/"
+          element={
+            <Landing
+              user={user}
+            />
+          }
+        />
+        <Route
+          path='/days'
+          element={
+            <ProtectedRoute user={user}>
+              <DayList />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/profiles"
           element={
