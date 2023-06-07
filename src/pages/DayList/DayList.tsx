@@ -1,13 +1,15 @@
+import { Dispatch, SetStateAction } from "react";
 import DayCard from "../../components/DayCard/DayCard"
 
 import { Day } from '../../types/models'
 
 interface DayListProps {
   days: Day[];
+  setDays: Dispatch<SetStateAction<Day[]>>;
 }
 
 const DayList = ( props: DayListProps ) => {
-  const { days } = props
+  const { days, setDays } = props
 
   return (
     <main>
@@ -15,6 +17,7 @@ const DayList = ( props: DayListProps ) => {
         <DayCard
           key={day.id}
           day={day}
+          setDays={setDays}
         />
       )}
     </main>

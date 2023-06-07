@@ -9,7 +9,6 @@ import DayDetails from './pages/DayDetails/DayDetails'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-// import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -29,7 +28,6 @@ import { DayFormData } from './types/forms'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
-  // const [profile, setProfile] = useState<Profile | null>()
   const [days, setDays] = useState<Day[]>([])
   
   const navigate = useNavigate()
@@ -49,14 +47,12 @@ function App(): JSX.Element {
   const handleCreateDay = async (dayFormData: DayFormData): Promise<void> => {
     try {
       const newDay = await dayService.create(dayFormData)
-      console.log(newDay)
-      setDays(days.map(day => (
-        day.id === newDay.id ? newDay : day
-      )))
+      setDays([...days, newDay])
     } catch (err) {
       console.log(err)      
     }
   }
+  
 
   const handleLogout = (): void => {
     authService.logout()
@@ -67,8 +63,6 @@ function App(): JSX.Element {
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
-
-  // if (!profile) return <div>...Loading</div>
 
   return (
     <>
@@ -91,6 +85,7 @@ function App(): JSX.Element {
             <ProtectedRoute user={user}>
               <DayList
                 days={days}
+                setDays={setDays}
               />
             </ProtectedRoute>
           }

@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react'
-import moment from 'moment';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-import { User, Profile } from '../../types/models'
+import { User } from '../../types/models'
 import { DayFormData } from '../../types/forms';
 
 interface NewDayProps {
   user: User | null;
-  // profile: Profile | null;
   handleCreateDay: (dayFormData: DayFormData) => void;
 }
 
 const NewDay = (props: NewDayProps): JSX.Element => {
   const { handleCreateDay, user } = props
+  const navigate = useNavigate()
   const defaultDate = new Date()
   const [dayFormData, setDayFormData] = useState<DayFormData>({
+    id: 0,
     dayDate: defaultDate.toISOString().slice(0,10),
     profileId: user?.profile.id,
     weight: 0,
@@ -30,6 +31,7 @@ const NewDay = (props: NewDayProps): JSX.Element => {
   const handleSubmit = (evt: React.FormEvent): void => {
     evt.preventDefault()
     handleCreateDay(dayFormData)
+    navigate('/days')
   }
 
   if (!user) return <div>...Loading</div>
@@ -48,8 +50,9 @@ const NewDay = (props: NewDayProps): JSX.Element => {
           value={dayFormData.dayDate}
           onChange={handleChange}
         />
+        <br/>
         <label htmlFor='weight-input'>
-          Weight:
+          Weight (lbs):
         </label>
         <input
           required
@@ -59,6 +62,7 @@ const NewDay = (props: NewDayProps): JSX.Element => {
           value={dayFormData.weight}
           onChange={handleChange}
         />
+        <br/>
         <label htmlFor='photo-input'>
           Upload Photo
         </label>
@@ -69,6 +73,7 @@ const NewDay = (props: NewDayProps): JSX.Element => {
           value={dayFormData.photo}
           onChange={handleChange}
         />
+        <br/>
         <button type='submit'>
           Create Day
         </button>
