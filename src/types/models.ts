@@ -2,7 +2,6 @@
 
 export interface Day {
   id: number;
-  // dayDate: Date;
   dayDate: string;
   profileId: number;
   weight: number;

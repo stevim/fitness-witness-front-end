@@ -1,6 +1,3 @@
-// import { useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom';
-
 // css
 import styles from './Landing.module.css'
 

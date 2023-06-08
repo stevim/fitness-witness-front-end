@@ -1,13 +1,10 @@
 /* ---------==== custom forms ====--------- */
 
 export interface DayFormData {
-  // id: number,
-  // dayDate: Date;
   dayDate: string;
   profileId?: number;
   weight: number;
   photo?: string;
-  notes?: string;
 }
 
 /* ---------===== auth forms =====--------- */

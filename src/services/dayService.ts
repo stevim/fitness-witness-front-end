@@ -1,6 +1,6 @@
 import * as tokenService from './tokenService'
 
-import { DayFormData, PhotoFormData } from '../types/forms'
+import { DayFormData } from '../types/forms'
 import { Day } from '../types/models'
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/days`
@@ -14,7 +14,6 @@ async function index(): Promise<Day[]> {
 
 async function create(
     dayFormData: DayFormData,
-    // photoFormData: PhotoFormData
   ): Promise<Day> {
     const res = await fetch(BASE_URL, {
       method: 'POST',
@@ -25,9 +24,6 @@ async function create(
       body: JSON.stringify(dayFormData)
     }
   )
-  // if (photoFormData) {
-  //   await addDayPhoto(photoFormData)
-  // }
   return await res.json() as Day
 }
 
@@ -53,22 +49,6 @@ async function deleteDay(dayId: number): Promise<void> {
   })
   return await res.json()
 }
-
-// async function addDayPhoto(photoData: PhotoFormData, dayId: number): Promise<string> {
-//   if (!photoData.photo) throw new Error('No photos found')
-  
-//   const photoFormData = new FormData()
-//   photoFormData.append('photo', photoData.photo)
-
-//   const res = await fetch(`${BASE_URL}/${dayId}/add-photo`, {
-//     method: 'PUT',
-//     headers: {
-//       'Authorization': `Bearer ${tokenService.getToken()}`
-//     },
-//     body: photoFormData
-//   })
-//   return await res.json() as string
-// }
 
 export {
   create,
