@@ -46,7 +46,7 @@ function App(): JSX.Element {
 
   const handleCreateDay = async (dayFormData: DayFormData): Promise<void> => {
     try {
-      const newDay = await dayService.create(dayFormData)
+      const newDay = await dayService.create(dayFormData,)
       setDays([...days, newDay])
     } catch (err) {
       console.log(err)      
