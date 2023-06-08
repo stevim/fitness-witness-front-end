@@ -1,30 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import { User } from '../../types/models'
+import * as dayService from '../../services/dayService'
+
+import { User, Day } from '../../types/models'
 import { DayFormData } from '../../types/forms';
 
 interface NewDayProps {
   user: User | null;
+  days: Day[];
   handleCreateDay: (dayFormData: DayFormData) => void;
 }
 
 const NewDay = (props: NewDayProps): JSX.Element => {
-  const { handleCreateDay, user } = props
-  const navigate = useNavigate()
+  const {
+    days,
+    user,
+    handleCreateDay,
+  } = props
   const defaultDate = new Date()
   const [dayFormData, setDayFormData] = useState<DayFormData>({
-    id: 0,
     dayDate: defaultDate.toISOString().slice(0,10),
     profileId: user?.profile.id,
     weight: 0,
     photo: '',
   })
+  // const [invalidDates, setInvalidDates] = useState(days)
+
+  const navigate = useNavigate()
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>):void => {
+    const {name, value} = evt.target
     setDayFormData({
       ...dayFormData,
-      [evt.target.name]: evt.target.value
+      [name]: value
     })
   }
 
@@ -33,6 +42,16 @@ const NewDay = (props: NewDayProps): JSX.Element => {
     handleCreateDay(dayFormData)
     navigate('/days')
   }
+
+  const invalidDates: string[] = days.map(day => {
+    return day.dayDate.slice(0,10)
+  })
+
+  console.log(invalidDates)
+
+  console.log(dayFormData.dayDate)
+  
+  
 
   if (!user) return <div>...Loading</div>
 
@@ -74,9 +93,13 @@ const NewDay = (props: NewDayProps): JSX.Element => {
           onChange={handleChange}
         />
         <br/>
-        <button type='submit'>
-          Create Day
-        </button>
+        {
+          invalidDates.includes(dayFormData.dayDate) ?
+          'You have already created this date' :
+          <button type='submit'>
+            Create Day
+          </button>
+        }
       </form>
     </div>
   )

@@ -24,9 +24,9 @@ async function create(dayFormData: DayFormData): Promise<Day> {
   return await res.json() as Day
 }
 
-async function update(dayFormData: DayFormData): Promise<Day> {
+async function update(dayFormData: DayFormData, dayId: number): Promise<Day> {
   console.log('patching')  
-  const res = await fetch(`${BASE_URL}/${dayFormData.id}`, {
+  const res = await fetch(`${BASE_URL}/${dayId}`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,

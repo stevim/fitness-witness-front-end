@@ -52,7 +52,6 @@ function App(): JSX.Element {
       console.log(err)      
     }
   }
-  
 
   const handleLogout = (): void => {
     authService.logout()
@@ -95,13 +94,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <NewDay
-                handleCreateDay={handleCreateDay}
                 user={user}
+                days={days}
+                handleCreateDay={handleCreateDay}
               />
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path='/days/:dayId'
           element={
             <ProtectedRoute user={user}>
@@ -109,7 +109,7 @@ function App(): JSX.Element {
               />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
