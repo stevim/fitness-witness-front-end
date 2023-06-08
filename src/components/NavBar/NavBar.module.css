@@ -1,0 +1,16 @@
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  color: orangered;
+  justify-content: right;
+  background-color: black;
+}
+
+.navLink {
+  color: orangered;
+  margin-left: 20px;
+}
+
+a, a:visited {
+  color: orangered;
+}

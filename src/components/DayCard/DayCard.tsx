@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction, useState } from 'react'
 
 import * as dayService from '../../services/dayService'
 
+import styles from './DayCard.module.css'
+
 import { Day } from '../../types/models'
 
 import { DayFormData } from '../../types/forms'
@@ -75,10 +77,8 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
     }
   })
 
-  console.log(invalidDates, currentDay, dayFormData.dayDate)
-
   const editView = (
-    <article>
+    <article className={styles.dayCardArticle}>
       <form onSubmit={handleEdit}>
         <label htmlFor='date-input'>
           Date:
@@ -115,17 +115,15 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
   )
 
   const saveView = (
-    <article>
-      {day.dayDate.slice(0,10)}
-      <button onClick={handleEdit}>
-        Edit
-      </button>
-      <br/>
-      {day.weight} lbs
-      <br/>
-      <button onClick={handleDelete}>
-        Delete
-      </button>
+    <article className={styles.dayCardArticle}>
+      <div className={styles.dayCardDate}>
+        <h3>{day.dayDate.slice(0,10)}</h3>
+        <button onClick={handleEdit}>Edit</button>
+      </div>
+      <div className={styles.dayCardWeight}>
+        <h3>{day.weight} lbs</h3>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </article>  
   )
 

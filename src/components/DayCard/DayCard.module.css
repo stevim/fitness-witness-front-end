@@ -1,0 +1,12 @@
+.dayCardArticle {
+  display: flex;
+  flex-direction: column;
+}
+
+.dayCardDate {
+  display: flex;
+}
+
+.dayCardWeight {
+  display: flex;
+}
