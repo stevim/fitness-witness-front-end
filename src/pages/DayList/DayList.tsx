@@ -1,14 +1,12 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import DayCard from "../../components/DayCard/DayCard"
 
 import { Day, User } from '../../types/models'
-// import { DayFormData } from "../../types/forms";
 
 interface DayListProps {
   days: Day[];
   setDays: Dispatch<SetStateAction<Day[]>>;
   user: User | null;
-  // handleUpdateDay: (dayFormData: DayFormData) => void;
 }
 
 
@@ -16,8 +14,6 @@ const DayList = ( props: DayListProps ) => {
   const {
     days,
     setDays,
-    user,
-    // handleUpdateDay
   } = props
   const [currIdx, setCurrIdx] = useState(0)
   const [displayCount, setDisplayCount] = useState(5)
@@ -52,7 +48,6 @@ const DayList = ( props: DayListProps ) => {
       day={day}
       days={days}
       setDays={setDays}
-      user={user}
     />)
 
   const handleDisplayCountChange = (newDisplayCount: number) => {

@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction, useState, useEffect } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import * as dayService from '../../services/dayService'
 
-import { Day, User } from '../../types/models'
+import { Day } from '../../types/models'
 
 import { DayFormData } from '../../types/forms'
 
@@ -10,7 +10,6 @@ interface DayCardProps {
   day: Day;
   days: Day[]
   setDays: Dispatch<SetStateAction<Day[]>>;
-  user: User | null;
 }
 
 const DayCard = ( props: DayCardProps ): JSX.Element => {
@@ -18,7 +17,6 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
     day,
     days,
     setDays,
-    user,
   } = props
   const [editMode, setEditMode] = useState(false)
   const [dayFormData, setDayFormData] = useState<DayFormData>({
