@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState, useEffect } from 'react'
 
 import * as dayService from '../../services/dayService'
 
-import { Day } from '../../types/models'
+import { Day, User } from '../../types/models'
 
 import { DayFormData } from '../../types/forms'
 
@@ -10,7 +10,7 @@ interface DayCardProps {
   day: Day;
   days: Day[]
   setDays: Dispatch<SetStateAction<Day[]>>;
-  // handleUpdateDay: (dayFormData: DayFormData) => void;
+  user: User | null;
 }
 
 const DayCard = ( props: DayCardProps ): JSX.Element => {
@@ -18,25 +18,16 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
     day,
     days,
     setDays,
-    // handleUpdateDay
+    user,
   } = props
-  const defaultDate = new Date()
   const [editMode, setEditMode] = useState(false)
-
-  const formatDate = (dateStr: string): string => {
-    console.log(dateStr)
-    const formattedDate = dateStr.slice(0,10)
-    console.log(formattedDate)
-    return formattedDate
-  }
-
   const [dayFormData, setDayFormData] = useState<DayFormData>({
-    // dayDate: defaultDate.toISOString().slice(0,10),
     dayDate: day.dayDate,
     profileId: day.profileId,
     weight: day.weight,
     photo: day.photo,
   })
+  const [currentDay, setCurrentDay] = useState('')
   
   const handleDelete = async (): Promise<void> => {
     try {
@@ -51,11 +42,9 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
   const handleUpdateDay = async (dayFormData: DayFormData, dayId: number): Promise<void> => {
     try {
       const updatedDay = await dayService.update(dayFormData, dayId)
-      // const daysData = await dayService.index()
       setDays(days.map((day) => {
         return day.id === updatedDay.id ? updatedDay : day
       }))
-      console.log(days)      
     } catch (err) {
       console.log(err)
     }
@@ -72,16 +61,23 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
   const handleEdit = (evt: React.FormEvent) => {
     evt.preventDefault()
     if (editMode) {
-      console.log(dayFormData)
       handleUpdateDay(dayFormData, day.id)
       setEditMode(false)
     } else {
+      setCurrentDay(day.dayDate)
       setEditMode(true)
     } 
   }
-  const invalidDates: string[] = days.map(day => {
-    return day.dayDate.slice(0,10)
+
+  const invalidDates = days.map(day => {
+    if (day.dayDate !== currentDay) {
+      return day.dayDate.slice(0,10)
+    } else {
+      return ''
+    }
   })
+
+  console.log(invalidDates, currentDay, dayFormData.dayDate)
 
   const editView = (
     <article>
@@ -110,7 +106,7 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
           onChange={handleChange}
         />
         {
-          invalidDates.includes(dayFormData.dayDate) ?
+          (invalidDates.includes(dayFormData.dayDate) && dayFormData.dayDate !== currentDay) ?
           'Cant' :
           <button type='submit'>
             Save
@@ -123,7 +119,6 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
   const saveView = (
     <article>
       {day.dayDate.slice(0,10)}
-      {/* {day.dayDate} */}
       <button onClick={handleEdit}>
         Edit
       </button>
