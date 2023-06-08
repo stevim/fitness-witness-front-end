@@ -121,7 +121,7 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
         Edit
       </button>
       <br/>
-      {day.weight} 
+      {day.weight} lbs
       <br/>
       <button onClick={handleDelete}>
         Delete
