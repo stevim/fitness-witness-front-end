@@ -101,15 +101,6 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
-        {/* <Route
-          path='/days/:dayId'
-          element={
-            <ProtectedRoute user={user}>
-              <DayDetails
-              />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}

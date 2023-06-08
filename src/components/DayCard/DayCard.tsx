@@ -79,6 +79,9 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
       setEditMode(true)
     } 
   }
+  const invalidDates: string[] = days.map(day => {
+    return day.dayDate.slice(0,10)
+  })
 
   const editView = (
     <article>
@@ -106,9 +109,13 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
           value={dayFormData.weight}
           onChange={handleChange}
         />
-        <button type='submit'>
-          Save
-        </button>
+        {
+          invalidDates.includes(dayFormData.dayDate) ?
+          'Cant' :
+          <button type='submit'>
+            Save
+          </button>
+        }
       </form>
     </article>
   )

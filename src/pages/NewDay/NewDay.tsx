@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
-import * as dayService from '../../services/dayService'
 
 import { User, Day } from '../../types/models'
 import { DayFormData } from '../../types/forms';
@@ -25,7 +23,6 @@ const NewDay = (props: NewDayProps): JSX.Element => {
     weight: 0,
     photo: '',
   })
-  // const [invalidDates, setInvalidDates] = useState(days)
 
   const navigate = useNavigate()
 
@@ -46,14 +43,6 @@ const NewDay = (props: NewDayProps): JSX.Element => {
   const invalidDates: string[] = days.map(day => {
     return day.dayDate.slice(0,10)
   })
-
-  console.log(invalidDates)
-
-  console.log(dayFormData.dayDate)
-  
-  
-
-  if (!user) return <div>...Loading</div>
 
   return (
     <div>
