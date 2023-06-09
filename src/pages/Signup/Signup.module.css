@@ -9,10 +9,31 @@ input[type="file"] {
   padding: 0;
 }
 
-.container {
+.signUpContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+#signUpFormContainer {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  margin-top: 50px;
+  width: 600px;
+  border-radius: 25px;
+}
+
+.signUpInput {
+  background-color: black;
+  color: white;
+  border-color: #ff4500;
+}
+
+#signUpHeader {
+  margin-top: 40px;
 }
 
 .message {
@@ -36,6 +57,15 @@ input[type="file"] {
   justify-content: end;
   align-items: center;
   margin-bottom: 8px;
+}
+
+.signUpBtn {
+  margin-left: 16px;
+  color: white;
+  background-color: black;
+  border-width: 2px;
+  border-color: #ff4500;
+  border-radius: 5px;
 }
 
 .button {

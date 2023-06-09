@@ -5,10 +5,28 @@ input {
   width: 300px;
 }
 
-.container {
+.logInContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.logInForm {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  width: 450px;
+  height: 300px;
+  border-radius: 25px;
+}
+
+.logInInput {
+  color: white;
+  background-color: black;
+  border-color: #ff4500;
+  width: 250px;
 }
 
 .message {
@@ -34,8 +52,13 @@ input {
   margin-bottom: 8px;
 }
 
-.button {
+.logInBtn {
   margin-left: 16px;
+  color: white;
+  background-color: black;
+  border-width: 2px;
+  border-color: #ff4500;
+  border-radius: 5px;
 }
 
 .form > label:last-of-type {

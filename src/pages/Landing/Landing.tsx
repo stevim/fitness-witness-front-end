@@ -16,6 +16,8 @@ const Landing = (props: LandingProps): JSX.Element => {
 
   if (user) {
     navigate('/days')
+  } else {
+    navigate('/auth/login')
   }
 
   const userView = (

@@ -87,60 +87,72 @@ const Signup = (props: AuthPageProps): JSX.Element => {
   }
 
   return (
-    <main className={styles.container}>
-      <h1>Sign Up</h1>
-      <p className={styles.message}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Name
-          <input type="text" value={name} name="name" onChange={handleChange} />
-        </label>
-        <label className={styles.label}>
-          Email
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Confirm Password
-          <input
-            type="password"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Upload Photo
-          <input 
-            type="file" 
-            name="photo" 
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-          />
-        </label>
-        <div>
-          <Link to="/">Cancel</Link>
-          <button
-            className={styles.button}
-            disabled={ isFormInvalid() || isSubmitted }
-          >
-            {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
-          </button>
-        </div>
-      </form>
+    <main className={styles.signUpContainer}>
+      <div id={styles.signUpFormContainer}>
+        <h1 id={styles.signUpHeader}>SIGN UP</h1>
+        <p className={styles.message}>{message}</p>
+        <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
+          <label className={styles.label}>
+            Name
+            <input
+              type="text"
+              value={name}
+              name="name"
+              onChange={handleChange}
+              className={styles.signUpInput}
+            />
+          </label>
+          <label className={styles.label}>
+            Email
+            <input
+              type="text"
+              value={email}
+              name="email"
+              onChange={handleChange}
+              className={styles.signUpInput}
+            />
+          </label>
+          <label className={styles.label}>
+            Password
+            <input
+              type="password"
+              value={password}
+              name="password"
+              onChange={handleChange}
+              className={styles.signUpInput}
+            />
+          </label>
+          <label className={styles.label}>
+            Confirm Password
+            <input
+              type="password"
+              value={passwordConf}
+              name="passwordConf"
+              onChange={handleChange}
+              className={styles.signUpInput}
+            />
+          </label>
+          <label className={styles.label}>
+            Upload Photo
+            <input 
+              type="file" 
+              name="photo" 
+              onChange={handleChangePhoto}
+              ref={imgInputRef}
+              className={styles.signUpInput}
+            />
+          </label>
+          <div>
+            <Link to="/">CANCEL</Link>
+            <button
+              className={styles.signUpBtn}
+              disabled={ isFormInvalid() || isSubmitted }
+            >
+              {!isSubmitted ? 'SIGN UP' : 'Sending...'}
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
   )
 }

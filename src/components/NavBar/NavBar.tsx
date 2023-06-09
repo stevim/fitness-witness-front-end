@@ -19,7 +19,12 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     <nav>
       {user ?
         <div className={styles.navbarContainer}>
-          <div id={styles.userName}>{user.name.toUpperCase()}</div>
+          <div id={styles.userName}>
+            {
+              
+            }
+            {user.name.toUpperCase()}
+          </div>
           <div id={styles.links}>
             <div className={styles.navLink}><NavLink to='/days'>ALL DAYS</NavLink></div>
             <div className={styles.navLink}><NavLink to='/days/new' >ADD DAY</NavLink></div>
@@ -29,8 +34,11 @@ const NavBar = (props: NavBarProps): JSX.Element => {
         </div>
       :
         <div className={styles.navbarContainer}>
-          <div className={styles.navLink}><NavLink to="/auth/login">LOG IN</NavLink></div>
-          <div className={styles.navLink}><NavLink to="/auth/signup">SIGN UP</NavLink></div>
+          <div></div>
+          <div id={styles.links}>
+            <div className={styles.navLink}><NavLink to="/auth/login">LOG IN</NavLink></div>
+            <div className={styles.navLink}><NavLink to="/auth/signup">SIGN UP</NavLink></div>
+          </div>
         </div>
       }
     </nav>
