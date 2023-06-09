@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 import { User, Day } from '../../types/models'
-import { DayFormData } from '../../types/forms';
+import { DayFormData } from '../../types/forms'
+
+import saveBtn from '../../assets/icons/saveBtn.svg'
+
+import styles from './NewDay.module.css'
 
 interface NewDayProps {
   user: User | null;
@@ -44,40 +48,47 @@ const NewDay = (props: NewDayProps): JSX.Element => {
   })
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='date-input'>
-          Date:
-        </label>
-        <input
-          required
-          type='date'
-          name='dayDate'
-          id='date-input'
-          value={dayFormData.dayDate}
-          onChange={handleChange}
-        />
-        <br/>
-        <label htmlFor='weight-input'>
-          Weight (lbs):
-        </label>
-        <input
-          required
-          type='number'
-          name='weight'
-          id='weight-input'
-          value={dayFormData.weight}
-          onChange={handleChange}
-        />
-        <br/>
-        {
-          invalidDates.includes(dayFormData.dayDate) ?
-          'You have already created this date' :
-          <button type='submit'>
-            Create Day
-          </button>
-        }
-      </form>
+    <div className={styles.newDayContainer}>
+      <div className={styles.newDayDiv}>
+        <form onSubmit={handleSubmit} className={styles.newDayForm}>
+          <div className={styles.dateDiv}>
+            <label htmlFor='date-input'>
+              <h2>Date:</h2>
+            </label>
+            <input
+              required
+              type='date'
+              name='dayDate'
+              id='date-input'
+              value={dayFormData.dayDate}
+              onChange={handleChange}
+              className={styles.dateInput}
+            />
+          </div>
+          <div className={styles.weightDiv}>
+            <label htmlFor='weight-input'>
+              <h2>Weight:</h2>
+            </label>
+            <input
+              required
+              type='number'
+              name='weight'
+              id='weight-input'
+              value={dayFormData.weight}
+              onChange={handleChange}
+              className={styles.weightInput}
+            />
+            <h3>lbs</h3>
+          </div>
+          {
+            invalidDates.includes(dayFormData.dayDate) ?
+            'Date already exists' :
+            <button type='submit' className={styles.saveBtn}>
+              <img src={saveBtn} height='40px'/>
+            </button>
+          }
+        </form>
+      </div>
     </div>
   )
 }

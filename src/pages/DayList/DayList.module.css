@@ -1,10 +1,21 @@
-.dropdown {
+.dropdownContainer {
+  margin-top: 30px;
   display: flex;
-  justify-content: center;
-  justify-self: center;
-  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.dropdown {
+  /* margin-top: 30px; */
+  display: flex;
+  /* justify-content: center; */
+  /* justify-self: center; */
+  /* align-items: center; */
   gap: 20px;
-  /* justify-content: space-evenly; */
+}
+
+.arrowBtn {
+  background-color: #242424;
+  border-width: 0;
 }
 
 .dayCardContainer {

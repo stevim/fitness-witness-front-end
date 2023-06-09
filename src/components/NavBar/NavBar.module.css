@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: row;
   color: orangered;
-  justify-content: right;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: black;
+  height: 50px;
 }
 
 .navLink {

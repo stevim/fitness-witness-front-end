@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: inherit;
+  /* border-width: 1px;
+  border-color: greenyellow; */
 }
 
 body {

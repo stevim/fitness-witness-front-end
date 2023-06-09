@@ -20,15 +20,15 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       {user ?
         <div className={styles.navbarContainer}>
           <div>Welcome, {user.name}</div>
-          <div className={styles.navLink}><NavLink to='/days'>All Days</NavLink></div>
-          <div className={styles.navLink}><NavLink to='/days/new' >Add Day</NavLink></div>
+          <div className={styles.navLink}><NavLink to='/days'>ALL DAYS</NavLink></div>
+          <div className={styles.navLink}><NavLink to='/days/new' >ADD DAYy</NavLink></div>
           <div className={styles.navLink}><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></div>
           <div className={styles.navLink}><NavLink to="/auth/change-password">Change Password</NavLink></div>
         </div>
       :
         <div className={styles.navbarContainer}>
-          <div className={styles.navLink}><NavLink to="/auth/login">Log In</NavLink></div>
-          <div className={styles.navLink}><NavLink to="/auth/signup">Sign Up</NavLink></div>
+          <div className={styles.navLink}><NavLink to="/auth/login">LOG IN</NavLink></div>
+          <div className={styles.navLink}><NavLink to="/auth/signup">SIGN UP</NavLink></div>
         </div>
       }
     </nav>

@@ -1,0 +1,56 @@
+.newDayContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.newDayDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 400px;
+}
+
+.newDayForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dateDiv {
+  display: flex;
+  align-items: center;
+}
+
+.weightDiv {
+  display: flex;
+  align-items: center;
+}
+
+.dateInput {
+  width: 150px;
+  color: white;
+  background-color: black;
+  border-width: 2px;
+  border-color: #ff4500;
+}
+
+.weightInput {
+  width: 65px;
+  color: white;
+  background-color: black;
+  border-width: 2px;
+  border-color: #ff4500;
+}
+
+.saveBtn {
+  background-color: black;
+  border-width: 0;
+}
+
+h3 {
+  margin-left: 15px;
+}

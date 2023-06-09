@@ -1,9 +1,12 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import DayCard from "../../components/DayCard/DayCard"
 
-import styles from './DayList.module.css'
-
 import { Day, User } from '../../types/models'
+
+import arrowLeft from '../../assets/icons/arrowLeft.svg'
+import arrowRight from '../../assets/icons/arrowRight.svg'
+
+import styles from './DayList.module.css'
 
 interface DayListProps {
   days: Day[];
@@ -66,17 +69,23 @@ const DayList = ( props: DayListProps ) => {
 
   return (
     <main>
-      {/* <div className={styles.dropdownContainer}> */}
+      <div className={styles.dropdownContainer}>
         <div className={styles.dropdown}>
-          <button onClick={handleDecrease}>↞</button>
-          <select value={selectedOption} onChange={handleSelect}>
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-          </select>
-          <button onClick={handleIncrease}>↠</button>
+          <button onClick={handleDecrease} className={styles.arrowBtn}>
+            <img src={arrowLeft} height='40px'/>
+          </button>
+          <div className={styles.dropdownContainer}>
+            <select value={selectedOption} onChange={handleSelect} className={styles.dropdown}>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
+          <button onClick={handleIncrease} className={styles.arrowBtn}>
+            <img src={arrowRight} height='40px'/>
+          </button>
         </div>
-      {/* </div> */}
+      </div>
       <div className={styles.dayCardContainer}>
         {filteredDays}
       </div>
