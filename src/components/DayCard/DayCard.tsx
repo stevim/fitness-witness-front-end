@@ -2,11 +2,12 @@ import { Dispatch, SetStateAction, useState } from 'react'
 
 import * as dayService from '../../services/dayService'
 
+import { Day } from '../../types/models'
+import { DayFormData } from '../../types/forms'
+
 import styles from './DayCard.module.css'
 
-import { Day } from '../../types/models'
-
-import { DayFormData } from '../../types/forms'
+import editBtn from '../../assets/icons/edtBtn.svg'
 
 interface DayCardProps {
   day: Day;
@@ -77,6 +78,13 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
     }
   })
 
+  const formatDate = (dateStr: string): string => {
+    const date = new Date(dateStr)
+    date.setDate(date.getDate() + 1)
+    const options: object = { year: 'numeric', month: 'short', day: 'numeric' }
+    return date.toLocaleDateString(undefined, options)
+  }
+
   const editView = (
     <article className={styles.dayCardArticle}>
       <form onSubmit={handleEdit}>
@@ -115,16 +123,19 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
   )
 
   const saveView = (
-    <article className={styles.dayCardArticle}>
+    <div className={styles.dayCardDiv}>
       <div className={styles.dayCardDate}>
-        <h3>{day.dayDate.slice(0,10)}</h3>
-        <button onClick={handleEdit}>Edit</button>
+        <h3>{formatDate(day.dayDate)}</h3>
+        {/* <h3>{day.dayDate.slice(0,10)}</h3> */}
+        <button className={styles.editBtn} onClick={handleEdit}>
+          <img src={editBtn} height='20px'/>
+        </button>
       </div>
       <div className={styles.dayCardWeight}>
         <h3>{day.weight} lbs</h3>
-        <button onClick={handleDelete}>Delete</button>
       </div>
-    </article>  
+      <button className={styles.deleteBtn} onClick={handleDelete}>Delete</button>
+    </div>  
   )
 
   return (

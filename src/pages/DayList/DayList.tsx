@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import DayCard from "../../components/DayCard/DayCard"
 
+import styles from './DayList.module.css'
+
 import { Day, User } from '../../types/models'
 
 interface DayListProps {
@@ -43,12 +45,15 @@ const DayList = ( props: DayListProps ) => {
   const filteredDays = sortedDays
     .slice(currIdx, currIdx + displayCount)
     .map(day =>
-    <DayCard
-      key={day.id}
-      day={day}
-      days={days}
-      setDays={setDays}
-    />)
+      <div>
+        <DayCard
+          key={day.id}
+          day={day}
+          days={days}
+          setDays={setDays}
+        />
+      </div>
+    )
 
   const handleDisplayCountChange = (newDisplayCount: number) => {
     setDisplayCount(newDisplayCount)
@@ -61,14 +66,20 @@ const DayList = ( props: DayListProps ) => {
 
   return (
     <main>
-      <button onClick={handleDecrease}>↞</button>
-      <select value={selectedOption} onChange={handleSelect}>
-        <option value={5}>5</option>
-        <option value={10}>10</option>
-        <option value={20}>20</option>
-      </select>
-      <button onClick={handleIncrease}>↠</button>
-      {filteredDays}
+      {/* <div className={styles.dropdownContainer}> */}
+        <div className={styles.dropdown}>
+          <button onClick={handleDecrease}>↞</button>
+          <select value={selectedOption} onChange={handleSelect}>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+          </select>
+          <button onClick={handleIncrease}>↠</button>
+        </div>
+      {/* </div> */}
+      <div className={styles.dayCardContainer}>
+        {filteredDays}
+      </div>
     </main>
   )
 }

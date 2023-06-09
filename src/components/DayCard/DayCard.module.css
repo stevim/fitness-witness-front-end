@@ -1,12 +1,37 @@
-.dayCardArticle {
+.dayCardDiv {
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  background-color: black;
+  padding: 10px;
+  /* border-width: 5px;
+  border-color: black; */
 }
 
 .dayCardDate {
   display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.editBtn {
+  margin-left: 20px;
+  height: 30px;
+  background-color: black;
+  border-width: 0;
 }
 
 .dayCardWeight {
   display: flex;
+}
+
+.dayCardWeight {
+
+}
+
+.deleteBtn {
+  margin-bottom: 18px;
 }

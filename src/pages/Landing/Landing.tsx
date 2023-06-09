@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 // css
 import styles from './Landing.module.css'
 
@@ -10,11 +12,24 @@ interface LandingProps {
 
 const Landing = (props: LandingProps): JSX.Element => {
   const { user } = props
+  const navigate = useNavigate()
+
+  if (user) {
+    navigate('/days')
+  }
+
+  const userView = (
+    <h3>...loading</h3>
+  )
+
+  const guestView = (
+    <h2 className={styles.guestView}>Sign up to get started!</h2>
+  )
   
   return (
-    <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
-    </main>
+    <>
+      { user ? userView : guestView}
+    </>
   )
 }
 
