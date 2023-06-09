@@ -19,11 +19,13 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     <nav>
       {user ?
         <div className={styles.navbarContainer}>
-          <div>Welcome, {user.name}</div>
-          <div className={styles.navLink}><NavLink to='/days'>ALL DAYS</NavLink></div>
-          <div className={styles.navLink}><NavLink to='/days/new' >ADD DAYy</NavLink></div>
-          <div className={styles.navLink}><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></div>
-          <div className={styles.navLink}><NavLink to="/auth/change-password">Change Password</NavLink></div>
+          <div id={styles.userName}>{user.name.toUpperCase()}</div>
+          <div id={styles.links}>
+            <div className={styles.navLink}><NavLink to='/days'>ALL DAYS</NavLink></div>
+            <div className={styles.navLink}><NavLink to='/days/new' >ADD DAY</NavLink></div>
+            <div className={styles.navLink}><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></div>
+            <div className={styles.navLink}><NavLink to="/auth/change-password">CHANGE PASSWORD</NavLink></div>
+          </div>
         </div>
       :
         <div className={styles.navbarContainer}>

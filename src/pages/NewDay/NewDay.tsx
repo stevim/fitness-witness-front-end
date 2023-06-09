@@ -62,7 +62,7 @@ const NewDay = (props: NewDayProps): JSX.Element => {
               id='date-input'
               value={dayFormData.dayDate}
               onChange={handleChange}
-              className={styles.dateInput}
+              className={styles.newDateInput}
             />
           </div>
           <div className={styles.weightDiv}>
@@ -76,13 +76,13 @@ const NewDay = (props: NewDayProps): JSX.Element => {
               id='weight-input'
               value={dayFormData.weight}
               onChange={handleChange}
-              className={styles.weightInput}
+              className={styles.newWeightInput}
             />
-            <h3>lbs</h3>
+            <h3 className={styles.label}>lbs</h3>
           </div>
           {
             invalidDates.includes(dayFormData.dayDate) ?
-            'Date already exists' :
+            <p>Date already exists</p> :
             <button type='submit' className={styles.saveBtn}>
               <img src={saveBtn} height='40px'/>
             </button>

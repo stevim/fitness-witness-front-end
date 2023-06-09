@@ -7,8 +7,7 @@
   padding: 10px;
   height: 250px;
   width: 250px;
-  /* border-width: 5px;
-  border-color: black; */
+  border-radius: 25px;
 }
 
 .dayCardDate {
@@ -16,7 +15,7 @@
   padding: 5px;
   justify-content: space-between;
   align-items: center;
-  /* margin-left: 10px; */
+  margin-top: 20px;
 }
 
 .dayCardWeight {
@@ -25,6 +24,7 @@
 
 .saveViewBtns {
   display: flex;
+  margin-top: 20px;
 }
 
 .deleteBtn {
@@ -33,7 +33,6 @@
 }
 
 .editBtn {
-  /* margin-left: 20px; */
   height: 30px;
   background-color: black;
   border-width: 0;
@@ -53,7 +52,6 @@
 .editForm {
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */
   align-items: center;
   gap: 10px;
 }
@@ -88,15 +86,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 10px; */
 }
 
 .saveBtn {
   background-color: black;
   border-width: 0;
-  /* padding: 10px; */
 }
 
-p {
+#lbs {
   margin-left: 15px;
 }

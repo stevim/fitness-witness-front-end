@@ -12,11 +12,13 @@
   align-items: center;
   height: 300px;
   width: 400px;
+  border-radius: 25px;
 }
 
 .newDayForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 30px;
 }
 
@@ -30,7 +32,7 @@
   align-items: center;
 }
 
-.dateInput {
+.newDateInput {
   width: 150px;
   color: white;
   background-color: black;
@@ -38,7 +40,7 @@
   border-color: #ff4500;
 }
 
-.weightInput {
+.newWeightInput {
   width: 65px;
   color: white;
   background-color: black;
@@ -51,6 +53,6 @@
   border-width: 0;
 }
 
-h3 {
+.label {
   margin-left: 15px;
 }

@@ -118,11 +118,11 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
             onChange={handleChange}
             className={styles.weightInput}
           />
-          <p>lbs</p>
+          <p id={styles.lbs}>lbs</p>
         </div>
         {
           (invalidDates.includes(dayFormData.dayDate) && dayFormData.dayDate !== currentDay) ?
-          'Date already exists' :
+          <p>Date already exists</p> :
           <button className={styles.saveBtn} type='submit'>
             <img src={saveBtn} height='20px'/>
           </button>
@@ -137,7 +137,6 @@ const DayCard = ( props: DayCardProps ): JSX.Element => {
     <div className={styles.dayCardDiv}>
       <div className={styles.dayCardDate}>
         <h3>{formatDate(day.dayDate)}</h3>
-        {/* <h3>{day.dayDate.slice(0,10)}</h3> */}
       </div>
       <div className={styles.dayCardWeight}>
         <h3>{day.weight} lbs</h3>

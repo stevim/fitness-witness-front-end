@@ -70,12 +70,12 @@ const DayList = ( props: DayListProps ) => {
   return (
     <main>
       <div className={styles.dropdownContainer}>
-        <div className={styles.dropdown}>
+        <div id={styles.dropdown}>
           <button onClick={handleDecrease} className={styles.arrowBtn}>
             <img src={arrowLeft} height='40px'/>
           </button>
-          <div className={styles.dropdownContainer}>
-            <select value={selectedOption} onChange={handleSelect} className={styles.dropdown}>
+          <div className={styles.dropdownOptions}>
+            <select value={selectedOption} onChange={handleSelect} id={styles.dropdownSelect}>
               <option value={5}>5</option>
               <option value={10}>10</option>
               <option value={20}>20</option>
