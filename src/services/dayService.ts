@@ -28,7 +28,6 @@ async function create(
 }
 
 async function update(dayFormData: DayFormData, dayId: number): Promise<Day> {
-  console.log('patching')  
   const res = await fetch(`${BASE_URL}/${dayId}`, {
     method: 'PATCH',
     headers: {
