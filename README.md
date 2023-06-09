@@ -48,8 +48,7 @@ With its no-nonsense approach, users can log a day, and their weight for that da
 
 # Attributions
 
-[Button Icons and Favicon](https://www.svgrepo.com/)
-
+[SVGRepo](https://www.svgrepo.com/) is an incredibly useful site that provides all of the icons and favicon for this app
   
 
 # Next Steps
