@@ -143,7 +143,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
             />
           </label>
           <div>
-            <Link to="/">CANCEL</Link>
+            <Link to="/auth/login">ALREADY HAVE AN ACCOUNT?</Link>
             <button
               className={styles.signUpBtn}
               disabled={ isFormInvalid() || isSubmitted }

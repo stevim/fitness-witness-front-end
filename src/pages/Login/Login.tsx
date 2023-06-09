@@ -76,7 +76,7 @@ const LoginPage = (props: AuthPageProps): JSX.Element => {
             />
           </label>
           <div>
-            <Link to="/">CANCEL</Link>
+            <Link to="/auth/signup">CREATE ACCOUNT</Link>
             <button className={styles.logInBtn} disabled={isFormInvalid()}>
               LOG IN
             </button>
