@@ -20,9 +20,6 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       {user ?
         <div className={styles.navbarContainer}>
           <div id={styles.userName}>
-            {
-              
-            }
             {user.name.toUpperCase()}
           </div>
           <div id={styles.links}>

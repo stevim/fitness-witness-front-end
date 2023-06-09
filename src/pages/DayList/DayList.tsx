@@ -21,7 +21,7 @@ const DayList = ( props: DayListProps ) => {
     setDays,
   } = props
   const [currIdx, setCurrIdx] = useState(0)
-  const [displayCount, setDisplayCount] = useState(5)
+  const [displayCount, setDisplayCount] = useState(7)
   const [selectedOption, setSelectedOption] = useState('')
 
   const handleIncrease = () => {
@@ -76,9 +76,9 @@ const DayList = ( props: DayListProps ) => {
           </button>
           <div className={styles.dropdownOptions}>
             <select value={selectedOption} onChange={handleSelect} id={styles.dropdownSelect}>
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
+              <option value={7}>7</option>
+              <option value={14}>14</option>
+              <option value={30}>30</option>
             </select>
           </div>
           <button onClick={handleIncrease} className={styles.arrowBtn}>

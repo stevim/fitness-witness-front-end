@@ -5,8 +5,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 // pages
 import DayList from './pages/DayList/DayList'
 import NewDay from './pages/NewDay/NewDay'
-
-// import DayDetails from './pages/DayDetails/DayDetails'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
